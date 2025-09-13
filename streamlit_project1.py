@@ -51,7 +51,7 @@ elif choice == 'Business Objective':
     Target customers: retail buyers, serving daily consumption needs.
     """)
 
-    st.subheader("Project Objectives")
+    st.subheader("Project Objectives: Customer segmentation for easier management and advertising")
     st.write("""
     - Increase sales revenue by analyzing customer purchasing behavior.
     - Reach the right target audience and promote suitable products.
@@ -277,6 +277,7 @@ elif choice=='Phân loại khách hàng':
         
 
     
+
 
 
 
