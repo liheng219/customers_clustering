@@ -63,7 +63,21 @@ elif choice == 'Tổng quan về cửa hàng':
     
     st.image("store.jpg", width=400, caption="Customer Clustering")
     st.write("### Đọc dữ liệu của cửa hàng từ file csv")
-    
+    st.write("#### Dữ liệu mẫu:")
+    temp_ = {
+    "Member": [1808],
+    "Date": ["2015-07-21"],
+    "productId": [1],
+    "items": [3],
+    "productName": ["tropical fruit"],
+    "price": [7.8],
+    "Category": ["Fresh Food"],
+    "Gross_sales": [23.4],
+    "OrderID": [2988]
+    }
+
+    temp_ = pd.DataFrame(temp_)
+    st.dataframe(temp_)
 
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     
@@ -286,6 +300,7 @@ elif choice=='Phân loại khách hàng':
         
 
     
+
 
 
 
