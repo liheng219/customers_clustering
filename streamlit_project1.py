@@ -250,7 +250,7 @@ elif choice=='Phân loại khách hàng':
     "Monetary": 200}
 
     # Chuyển thành DataFrame
-    temp = pd.DataFrame(temp)
+    temp = pd.DataFrame([temp])
     st.dataframe(temp)
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
@@ -286,6 +286,7 @@ elif choice=='Phân loại khách hàng':
         
 
     
+
 
 
 
