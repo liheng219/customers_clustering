@@ -6,3 +6,4 @@ matplotlib
 plotly
 seaborn
 squarify
+streamlit-option-menu
