@@ -63,7 +63,7 @@ elif choice == 'Tổng quan về cửa hàng':
     
     st.image("store.jpg", width=400, caption="Customer Clustering")
     st.write("### Đọc dữ liệu của cửa hàng từ file csv")
-    st.write("#### Dữ liệu mẫu:")
+    st.write("* Dữ liệu mẫu:")
     temp_ = {
     "Member": [1808],
     "Date": ["2015-07-21"],
@@ -256,7 +256,7 @@ elif choice=='Phân loại khách hàng':
 
     # Trường hợp 2: Đọc dữ liệu từ file csv
     st.write("### Hoặc đọc dữ liệu từ file csv")
-    st.write("#### Dữ liệu mẫu")
+    st.write("* Dữ liệu mẫu")
     temp = {
     "CustomerID": 0,
     "Date": "2025-06-01",
@@ -300,6 +300,7 @@ elif choice=='Phân loại khách hàng':
         
 
     
+
 
 
 
