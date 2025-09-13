@@ -63,6 +63,8 @@ elif choice == 'Tổng quan về cửa hàng':
     
     st.image("store.jpg", width=400, caption="Customer Clustering")
     st.write("### Đọc dữ liệu của cửa hàng từ file csv")
+    
+
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     
     if uploaded_file is not None:
@@ -238,11 +240,18 @@ elif choice=='Phân loại khách hàng':
     if st.button("Phân loại khách hàng"):
         st.write(f'📌 Khách hàng thuộc nhóm: **{data_["Segment"].iloc[0]}**')
 
-
-
-
     # Trường hợp 2: Đọc dữ liệu từ file csv
     st.write("### Hoặc đọc dữ liệu từ file csv")
+    st.write("#### Dữ liệu mẫu")
+    temp = {
+    "CustomerID": 0,
+    "Date": "2025-06-01",
+    "Frequency": 5,
+    "Monetary": 200}
+
+    # Chuyển thành DataFrame
+    temp = pd.DataFrame(temp)
+    st.dataframe(temp)
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, index_col=False)
@@ -277,6 +286,7 @@ elif choice=='Phân loại khách hàng':
         
 
     
+
 
 
 
