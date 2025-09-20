@@ -12,56 +12,249 @@ import plotly.express as px
 import warnings
 warnings.filterwarnings("ignore")
 
-# Using menu
-st.title("")
-menu = ["Home", "TOPIC", "Business Objective", "Tổng quan về cửa hàng", "Phân loại khách hàng"]
-choice = st.sidebar.selectbox('Menu', menu)
+# Page title
+st.title("📊 Customer Segmentation Dashboard")
+
+# Sidebar menu
+menu = ["🏠 Home", "📂 TOPIC", "🎯 Business Objective", "🏪 Tổng quan về cửa hàng", "🧩 Phân loại khách hàng"]
+choice = st.sidebar.selectbox('📌 Menu', menu)
+
+# Custom sidebar styling
 st.markdown(
     """
-    <style>
-        [data-testid="stSidebar"]::after {
-            content: "LÊ THỊ HẰNG\\A CHÂU HỮU NGHĨA";
-            white-space: pre-line;   /* Cho phép xuống dòng */
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            text-align: center;      /* Căn giữa ngang */
-            font-size: 14px;
-            font-weight: bold;
-            color: #444;
+        <style>
+            [data-testid="stSidebar"] {
+                position: relative;
+                padding-bottom: 140px !important;
+                background: 
+                    repeating-linear-gradient(
+                        45deg,
+                        rgba(255, 255, 255, 0.03) 0px,
+                        rgba(255, 255, 255, 0.03) 40px,
+                        transparent 40px,
+                        transparent 80px
+                    ),
+                    linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%) !important; /* dark luxury */
+                background-size: cover;
+            }
+
+    [data-testid="stSidebar"]::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: calc(20px + 12px + 8px);
+        width: 72%;
+        max-width: 220px;
+        height: 6px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #f7d9a7 0%, #ffe9c6 25%, #fffaf2 50%, #ffe9c6 75%, #f7d9a7 100%);
+        background-size: 200% 100%;
+        filter: blur(8px);
+        opacity: 0.9;
+        z-index: 9998;
+        animation: slideGlow 3.5s linear infinite;
+        pointer-events: none;
+    }
+
+    [data-testid="stSidebar"]::after {
+        content: "👩‍💼 LÊ THỊ HẰNG \\A 👨‍💼 CHÂU HỮU NGHĨA";
+        white-space: pre-line;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 86%;
+        max-width: 260px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 600;
+        color: #7a4e14;  /* luxury bronze-gold */
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(180deg, #fffdf7 0%, #fff0d6 100%);
+        box-shadow: 0 8px 22px rgba(160,120,40,0.18);
+        border: 1px solid rgba(160,120,40,0.12);
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    @keyframes slideGlow {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-testid="stSidebar"]::before {
+            animation: none;
+            filter: blur(6px);
+            opacity: 0.7;
         }
+    }
+
+    @media (max-width: 600px) {
+        [data-testid="stSidebar"]::after {
+            max-width: 200px;
+            font-size: 12px;
+            padding: 10px 12px;
+        }
+        [data-testid="stSidebar"]::before {
+            max-width: 180px;
+            height: 5px;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-if choice == 'Home':    
-    st.subheader("ĐỒ ÁN TỐT NGHIỆP DATA SCIENCE K306")
-    st.image("data_science.jpg", width=700, caption="Customer Clustering")
-elif choice == 'TOPIC':    
-    st.subheader("Project_1: Customer Clustering- KMEANS")
-    st.image("RFM.png", width=500, caption="Customer Clustering Kmeans")
-elif choice == 'Business Objective':
-    st.image("store.jpg", width=500, caption="Customer Clustering")
-    st.subheader("About Store X")
-    st.write("""
-    Specializes in essential products: vegetables, fruits, meat, fish, eggs, milk, beverages, etc.
 
-    Target customers: retail buyers, serving daily consumption needs.
-    """)
 
-    st.subheader("Project Objectives: Customer segmentation for easier management and advertising")
-    st.write("""
-    - Increase sales revenue by analyzing customer purchasing behavior.
-    - Reach the right target audience and promote suitable products.
-    - Enhance the shopping experience, improve customer care, and ensure satisfaction.
-    """)
+
+if choice == '🏠 Home':    
+    # Background style
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #ffffff; /* white background */
+        }
+        .title {
+            text-align: center; 
+            color: #2C3E50;
+        }
+        .subtitle {
+            text-align: center; 
+            font-size:16px; 
+            color: gray;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Custom title
+    st.markdown(
+        """
+        <h2 class="title">
+            🎓 ĐỒ ÁN TỐT NGHIỆP <br> 
+            <span style="color:#3498DB;">DATA SCIENCE K306</span>
+        </h2>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.write("")
     
+    # Show main image
+    st.image(
+        "data_science.jpg",
+        use_container_width=True,
+        caption="📊 Customer Clustering"
+    )
+
+    # Intro
+    st.markdown(
+        """<p class="subtitle">
+        Khám phá sức mạnh của dữ liệu qua phân tích & mô hình học máy
+        </p>""",
+        unsafe_allow_html=True
+    )
+
+    # Add extra images in columns
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.image("https://cdn-icons-png.flaticon.com/512/906/906175.png", caption="📈 Machine Learning", use_container_width=True)
+    with col2:
+        st.image("https://cdn-icons-png.flaticon.com/512/4149/4149643.png", caption="🤖 AI Models", use_container_width=True)
+    with col3:
+        st.image("https://cdn-icons-png.flaticon.com/512/2721/2721291.png", caption="📊 Data Visualization", use_container_width=True)
+
+    # Divider
+    st.markdown("---")
+
+    # Closing message
+    st.markdown(
+        """<p class="subtitle">
+        🌟 Chào mừng bạn đến với đồ án tốt nghiệp K306 🌟
+        </p>""",
+        unsafe_allow_html=True
+    )
+
+elif choice == '📂 TOPIC':    
+    st.subheader("📊 Project_1: Customer Clustering - KMEANS")
+
+    # Section title with icon
+    st.markdown("### 🔎 RFM Analysis Overview")
+
+    # Add explanation with inline icons
+    st.write(
+        "The **RFM Model** helps to segment customers based on their behavior "
+        "before applying **K-Means clustering 🤖**. "
+        "\n\n"
+        "- 🕒 **Recency**: How recently a customer made a purchase\n"
+        "- 🔁 **Frequency**: How often they purchase\n"
+        "- 💰 **Monetary**: How much they spend"
+    )
+
+    # Show multiple RFM related pictures in columns
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.image("https://storage.googleapis.com/anfin.vn/public/cms/ngay_giao_dich_khong_huong_quyen_0e439e8aca/ngay_giao_dich_khong_huong_quyen_0e439e8aca.webp", 
+                 use_container_width=True, caption="Recency Distribution")
+    with col2:
+        st.image("https://cdn.accgroup.vn/wp-content/uploads/2022/11/coopmart-ban-cua-moi-nha-source-dantri.jpg", 
+                 use_container_width=True, caption="Frequency Distribution")
+    with col3:
+        st.image("https://www.shutterstock.com/image-illustration/concept-unequal-distribution-income-3d-600nw-2120566865.jpg", 
+                 use_container_width=True, caption="Monetary Distribution")
+
+    st.markdown("---")
+
+    # Show clustering result
+    st.markdown("### Customer Clustering Result")
+    st.image("https://projectgurukul.org/wp-content/uploads/2022/01/k-means-clustering-customer-segmentation-output.webp", 
+             width=800, caption="Customer Clustering with KMeans")
+
+    st.info("💡 Tip: Each cluster represents a customer group with similar buying behaviors.")
+
+elif choice == '🎯 Business Objective':
+# Main RFM clustering image
+    st.image(
+        "https://www.moengage.com/wp-content/uploads/2020/07/predictive-segments-using-rfm-moengage.jpg",
+        width=800,
+        caption="📊 Customer Clustering with RFM"
+    )
+
+    # About section with store icon
+    st.subheader("🏪 About Store X")
+    st.write("""
+    **Specializes in essential products:**
+    🥦 Vegetables, 🍎 Fruits, 🍖 Meat, 🐟 Fish, 🥚 Eggs, 🥛 Milk, 🥤 Beverages, etc.  
+
+    **Target customers:** Retail buyers 👥, serving daily consumption needs.
+    """)
+
+    # Objectives section with dart icon
+    st.subheader("🎯 Project Objectives: Customer Segmentation for Management & Advertising")
+    st.write("""
+    - 📈 **Increase sales revenue** by analyzing customer purchasing behavior.  
+    - 🎯 **Reach the right target audience** and promote suitable products.  
+    - 🤝 **Enhance shopping experience**: improve customer care and ensure satisfaction.  
+    """)
+
+    # Optional: Highlight box
+    st.success("💡 With RFM + KMeans, Store X can better understand customers and create targeted marketing campaigns.")
+
+        
           
-elif choice == 'Tổng quan về cửa hàng':
+elif choice == '🏪 Tổng quan về cửa hàng':
     
-    st.image("store.jpg", width=400, caption="Customer Clustering")
+    st.image("store.jpg", width=800, caption="Customer Clustering")
     st.write("### Đọc dữ liệu của cửa hàng từ file csv")
     st.write("* Dữ liệu mẫu:")
     temp_ = {
@@ -211,11 +404,26 @@ elif choice == 'Tổng quan về cửa hàng':
                 fig1 = px.scatter(data, x="RecencyMean", y="MonetaryMean", size="FrequencyMean", color="Segment",
                 hover_name="Segment", size_max=50)
                 st.plotly_chart(fig1, use_container_width=True)
+            st.write( '''
+                     * Champions: Chi tiêu nhiều, thường xuyên: Nên duy trì quan hệ, chăm sóc đặc biệt (ưu đãi, chương trình VIP).
+                     * Potential customers: Chi tiêu vừa, khá thường xuyên: Có khả năng trở thành khách hàng trung thành nếu được chăm sóc tốt.
+                     * New customers: Mua gần đây: Cần nuôi dưỡng để biến thành khách hàng trung thành.
+                     * At risk: Lâu không mua, sức chi vừa: Nên có chiến dịch khuyến mãi/nhắc nhở để giữ chân.
+                     * Lost: Rất lâu không ghé, chi tiêu ít: Khả năng quay lại thấp, không nên đầu tư nhiều tài nguyên.
 
+            ''')
 
     
-elif choice=='Phân loại khách hàng':
+elif choice=='🧩 Phân loại khách hàng':
     st.image("RFM.png", width=500, caption="Customer Clustering Kmeans")
+    st.write(''' Có 5 nhóm khách hàng: 
+            * Champions.
+            * Potential customers.
+            * New customers.
+            * At risk.
+            * Lost.
+             
+             ''')
     with open("kmeans_rfm_model.pkl", "rb") as f:
      scaler, model_kmeans = pickle.load(f)
 
@@ -252,7 +460,21 @@ elif choice=='Phân loại khách hàng':
     data_["Segment"] = data_["Cluster"].astype(str).map(assign_segment)
 
     if st.button("Phân loại khách hàng"):
-        st.write(f'📌 Khách hàng thuộc nhóm: **{data_["Segment"].iloc[0]}**')
+        segment = data_["Segment"].iloc[0]
+        #st.write(f'📌 Khách hàng thuộc nhóm: **{segment}**')
+        st.success(f"📌 Khách hàng thuộc nhóm: **{segment}**")
+
+        if segment == 'Champions':
+            st.write('Champions: Chi tiêu nhiều, thường xuyên: Nên duy trì quan hệ, chăm sóc đặc biệt (ưu đãi, chương trình VIP).')
+        elif segment == 'Potential customers':
+            st.write('* Potential customers: Chi tiêu vừa, khá thường xuyên: Có khả năng trở thành khách hàng trung thành nếu được chăm sóc tốt.')
+        elif segment == 'New customers':
+            st.write('New customers: Mua gần đây: Cần nuôi dưỡng để biến thành khách hàng trung thành.')
+        elif segment == 'At risk':
+            st.write('At risk: Lâu không mua, sức chi vừa: Nên có chiến dịch khuyến mãi/nhắc nhở để giữ chân.')
+        elif segment == 'Lost':
+            st.write('Lost: Rất lâu không ghé, chi tiêu ít: Khả năng quay lại thấp, không nên đầu tư nhiều tài nguyên.')
+
 
     # Trường hợp 2: Đọc dữ liệu từ file csv
     st.write("### Hoặc đọc dữ liệu từ file csv")
